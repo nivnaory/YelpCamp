@@ -1,0 +1,15 @@
+.circle img{
+width:100%;
+padding: 20px;
+}
+.circle{
+    padding:auto;
+    padding-bottom: 50px;
+}
+.circle .caption-full{
+    padding: 9px;;
+}
+
+#delete{
+    display: inline;
+}
