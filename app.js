@@ -15,13 +15,23 @@ var  express=require("express"),
 
 //requiring Routes    
 var commentsRoute=require("./routes/comments"),
-    campgroundsRoute=require("./routes/campgrounds"),
-    authRoute=require("./routes/auth");
+     campgroundsRoute=require("./routes/campgrounds"),
+     authRoute=require("./routes/auth");
  
 
 
 mongoose.set('useNewUrlParser', true);
-mongoose.connect("mongodb://localhost/yelp_camp");
+
+mongoose.connect("mongodb+srv://nivnaory:nivniv@niv-emfg7.mongodb.net/nivnaory?retryWrites=true&w=majority",{
+ useNewUrlParser:true,
+ useCreateIndex:true,
+ }).then(()=>{
+  console.log("Connect to DB");
+ }).catch(err =>{
+  console.log(err.message);
+ }); 
+
+
 app.use(bodyPareser.urlencoded({extended :true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname  + "/public"));  
