@@ -31,7 +31,6 @@ mongoose.connect("mongodb+srv://nivnaory:nivniv@niv-emfg7.mongodb.net/nivnaory?r
   console.log("Eror",err.message);
  }); 
 
-
 app.use(bodyPareser.urlencoded({extended :true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname  + "/public"));  
@@ -69,5 +68,5 @@ app.use(authRoute);
 //open server!
 var port = process.env.PORT || 3002;
 app.listen(port, function () {
-  console.log("Server Has Started!")
+  console.log("Server Has Started!");
 });
