@@ -28,7 +28,7 @@ mongoose.connect("mongodb+srv://nivnaory:nivniv@niv-emfg7.mongodb.net/nivnaory?r
  }).then(()=>{
   console.log("Connect to DB");
  }).catch(err =>{
-  console.log(err.message);
+  console.log("Eror",err.message);
  }); 
 
 
@@ -67,7 +67,7 @@ app.use(authRoute);
 
 
 //open server!
-app.listen(3002,()=>{
-    console.log("Server has started");
-
+var port = process.env.PORT || 3002;
+app.listen(port, function () {
+  console.log("Server Has Started!")
 });
