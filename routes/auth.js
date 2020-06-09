@@ -21,7 +21,6 @@ router.post("/register",function(req,res){
       if(err){
           return res.render("register");
       }else{
-           console.log("niv");
           passport.authenticate("local")(req,res,function(){
               res.redirect("/campgrounds");
           });
@@ -30,7 +29,7 @@ router.post("/register",function(req,res){
      );
    });
    
-   
+    
   //SHOW LOGIN FORM
 router.get("/login",function(req,res){
      res.render("login",{massage:req.flash("Eror")});
@@ -42,7 +41,6 @@ router.get("/login",function(req,res){
      successRedirect:"/campgrounds",
      failureRedirect: "/login"
      }) ,function(req,res){
-       console.log("niv");
    });
    
    
