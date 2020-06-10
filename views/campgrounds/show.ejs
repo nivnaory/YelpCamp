@@ -12,18 +12,17 @@
 
 
 <div class="col-md-9">
-
   <div class="thumbnail">
   <h1><a><%=campgrounds.name%></a></h1>
 
-  <div class="circle">
-        <img src="<%=campgrounds.image %> " class="img-circle "> 
+  <div class="thumbnail">
+        <img src="<%=campgrounds.image %> " class="img-thumbnail"> 
         <div class="caption-full">
           <h4 class=""> <strong><%=campgrounds.price%> $</strong></h4>
           <p><%=campgrounds.description%> </p>
           <p><em> Submmited By <%=campgrounds.author.username %></em></p>
 
-          <% if(currentUser &&campgrounds.author.id.equals(currentUser._id)){ %>
+          <% if(currentUser &&campgrounds.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
           <a class="btn btn-warning" href="/campgrounds/<%= campgrounds._id %>/edit">Edit</a>
           <form id ="delete"action="/campgrounds/<%=campgrounds._id%>?_method=DELETE" method="POST"> 
             <button class="btn btn-danger">Delete</button>
@@ -48,7 +47,7 @@
                 <%=comment.text %> 
               </p>       
 
-              <% if(currentUser &&comment.author.id.equals(currentUser._id)){ %>
+              <% if(currentUser &&comment.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){ %>
            <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campgrounds._id %>/comments/<%= comment._id %>/edit">
             Edit</a>
             <form id="delete" action="/campgrounds/<%= campgrounds._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">

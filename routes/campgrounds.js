@@ -9,7 +9,7 @@ router.get("/",function(req,res){
         if (err){
             console.log("EROR!");
         } else{
-            res.render("campgrounds/index",{campgrounds:allCampgrounds,currentUser:req.user});
+            res.render("campgrounds/index",{campgrounds:allCampgrounds,currentUser:req.user,page:'campgrounds'});
         }
     });
   });
@@ -107,7 +107,7 @@ function checkCampgroundOwnership(req,res,next){
                 console.log("EROR!! NIV NAORY");
                 redirect("/campgrounds");
             }
-            if (foundCampground.author.id.equals(req.user._id)){
+            if (foundCampground.author.id.equals(req.user._id)|| req.user.isAdmin){
                   next();
             }else{
             

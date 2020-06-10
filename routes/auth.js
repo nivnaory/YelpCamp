@@ -10,13 +10,15 @@ router.get('/',function(req,res){
 //AUTH ROUTES//
 //SHOW ROUTING //show register form 
 router.get("/register",function(req,res){
-    res.render("register");
+    res.render("register",{page:'register'});
    });
    
   //hendle sign up logic
 router.post("/register",function(req,res){
-       
      var newUser=new User({username:req.body.username});
+     if (req.body.adminCode=="nivniv29"){
+       newUser.isAdmin="true"
+     }
      User.register(newUser,req.body.password,function(err,user){
       if(err){
           return res.render("register");
@@ -32,7 +34,7 @@ router.post("/register",function(req,res){
     
   //SHOW LOGIN FORM
 router.get("/login",function(req,res){
-     res.render("login",{massage:req.flash("Eror")});
+     res.render("login",{page:'login'});
    });
    
    //handle login logic 

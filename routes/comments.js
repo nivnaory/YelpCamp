@@ -91,7 +91,7 @@ function isLoggedIn(req,res,next){
                 console.log("EROR!! NIV NAORY");
                 redirect("/campgrounds");
             }
-            if (foundComment.author.id.equals(req.user._id)){
+            if (foundComment.author.id.equals(req.user._id)||req.user.isAdmin){
                   next();
             }else{
             
